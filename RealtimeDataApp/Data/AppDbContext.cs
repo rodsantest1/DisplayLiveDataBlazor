@@ -4,7 +4,7 @@ namespace RealtimeDataApp.Data
 {
     public class AppDbContext : DbContext
     {
-        string _connectionString = "Server=DESKTOP-UL9R65A\\SQLEXPRESS;Database=CompanyDatabase2;Trusted_Connection=True;";
+        string _connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=CompanyDatabase2;Trusted_Connection=True;";
 
         public DbSet<Employee> Employee { get; set; }
 
