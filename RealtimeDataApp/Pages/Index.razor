@@ -2,31 +2,33 @@
 
 <PageTitle>Live Data</PageTitle>
 
-@foreach (var emp in EmployeesList)
+@foreach (var notify in NotificationsList)
 {
-    <p>@emp.Name | @emp.Title</p>
+    <p>@notify.EventName | @notify.EventValue</p>
 }
 
 @using Microsoft.AspNetCore.SignalR.Client;
 @using RealtimeDataApp.Data;
 @using RealtimeDataApp.Services;
-@inject EmployeeService employeeService;
+@inject NotificationService NotificationService;
+@inject NotificationService notificationService;
 @inject NavigationManager Navigation
 @code {
-    List<Employee> EmployeesList = new List<Employee>();
+    List<NotificationModel> NotificationsList = new List<NotificationModel>();
     private HubConnection? hubConnection;
 
     protected override async Task OnInitializedAsync()
     {
-        EmployeesList = await employeeService.GetAllEmployees();
+        var data = await notificationService.GetAllNotifications();
+        NotificationsList = data.ToList();
 
         hubConnection = new HubConnectionBuilder()
-            .WithUrl(Navigation.ToAbsoluteUri("/employeehub"))
+            .WithUrl(Navigation.ToAbsoluteUri("/notificationhub"))
             .Build();
 
-        hubConnection.On<List<Employee>>("RefreshEmployees", employees =>
+        hubConnection.On<IEnumerable<NotificationModel>>("ReceiveNotification", Notifications =>
             {
-                EmployeesList = employees;
+                NotificationsList = Notifications.ToList();
                 InvokeAsync(StateHasChanged);
             });
 
