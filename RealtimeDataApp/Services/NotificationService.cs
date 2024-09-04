@@ -8,12 +8,12 @@ namespace RealtimeDataApp.Services
 {
     public class NotificationService
     {
-        private readonly ISqlDataAccess _db;
+        private readonly NotificationData _db;
         private readonly IHubContext<NotificationHub> _context;
         private readonly SqlTableDependency<Notification> _dependency;
         private readonly string _connectionString;
 
-        public NotificationService(ISqlDataAccess db, IHubContext<NotificationHub> context)
+        public NotificationService(NotificationData db, IHubContext<NotificationHub> context)
         {
             _context = context;
             _db = db;
@@ -31,9 +31,7 @@ namespace RealtimeDataApp.Services
 
         public Task<IEnumerable<NotificationModel>> GetAllNotifications()
         {
-            string sql = "select * from dbo.Notification";
-
-            return _db.LoadData<NotificationModel, dynamic>(sql, new { });
+            return _db.GetEvents();
         }
 
     }

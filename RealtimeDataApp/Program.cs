@@ -11,6 +11,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddTransient<ISqlDataAccess, SqlDataAccess>();
+builder.Services.AddTransient<NotificationData>();
 //Adding the EmployeeService as a singleton
 builder.Services.AddSingleton<EmployeeService>();
 builder.Services.AddSingleton<NotificationService>();
