@@ -18,7 +18,7 @@ namespace RealtimeDataApp.Services
         public EmployeeService(IHubContext<EmployeeHub> context)
         {
             _context = context;
-            _connectionString = "Server=(localdb)\\mssqllocaldb;Database=CompanyDatabase2;Trusted_Connection=True;";
+            _connectionString = "Server=.;Database=HamMgmtDB;Trusted_Connection=True;";
             _dependency = new SqlTableDependency<Employee>(_connectionString, "Employee");
             _dependency.OnChanged += Changed;
             _dependency.Start();

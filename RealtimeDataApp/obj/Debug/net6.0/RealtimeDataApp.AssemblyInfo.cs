@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RealtimeDataApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7dac7e55b6b2d5f8cae3b3ae93a5410d89e84fdd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+528ed80b6420010ca88ce74af1d93cdf19ebeb25")]
 [assembly: System.Reflection.AssemblyProductAttribute("RealtimeDataApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RealtimeDataApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
